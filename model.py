@@ -10,8 +10,6 @@ import seaborn as sns
 # Charger les données depuis le fichier CSV existant
 data = pd.read_csv('rebot.csv')
 
-# print(data.info())
-# print(data.describe())
 
 X = data.drop('action',axis=1)
 y = data['action']
@@ -27,8 +25,9 @@ model.fit(X_train, y_train)
 
 # Étape 4 : Évaluation du modèle
 y_pred = model.predict(X_test)
+
 print("Score de précision :", accuracy_score(y_test, y_pred))
-print("Rapport de classification :\n", classification_report(y_test, y_pred))
+# print("Rapport de classification :\n", classification_report(y_test, y_pred))
 
 #sauvegarder le model 
 joblib.dump(model, 'robot.pkl')
